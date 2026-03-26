@@ -1,0 +1,12 @@
+{
+  "name": "interview-frontend",
+  "private": true,
+  "workspaces": [
+    "tests/*"
+  ],
+  "scripts": {
+    "test1": "npm run start --workspace=tests/01-group-by",
+    "test2": "npm run dev --workspace=tests/02-search-filter",
+    "test3": "npm run dev --workspace=tests/03-color-cards"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "test-01-group-by",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node solution.js"
+  }
+}
