@@ -12,20 +12,6 @@ const users = [
   { name: 'Lena', role: 'user'  },
 ];
 
-function groupBy(arr, key) {
-  return arr.reduce((acc, item) => {
-    const groupKey = item.key; // BUG 1
-
-    if (!acc[groupKey]) {
-      acc[groupKey] = [];
-    }
-
-    return acc[groupKey].push(item); // BUG 2
-  }, {});
-}
-
-const result = groupBy(users, 'role');
-console.log(JSON.stringify(result, null, 2));
 
 /*
   Expected output:
