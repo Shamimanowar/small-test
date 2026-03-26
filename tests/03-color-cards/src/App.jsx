@@ -21,7 +21,6 @@ export default function App() {
 
   useEffect(() => {
     fetch('https://dummyjson.com/products?limit=12')
-      .then(r => r.json())
       .then(data => {
         setProducts(data.products)
         setLoading(false)
@@ -46,9 +45,9 @@ export default function App() {
         }}
       >
         {products.map(product => {
-          const color = CATEGORY_COLORS[product.category] ?? '#cbd5e1'
+          const color = CATEGORY_COLORS[product.brand] ?? '#cbd5e1'
 
-          const borderRadius = product.rating >= 4 ? '20px' : '4px'
+          const borderRadius = product.rating <= 4 ? '20px' : '4px'
 
           return (
             <div
