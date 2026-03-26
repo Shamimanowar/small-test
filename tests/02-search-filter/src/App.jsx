@@ -1,13 +1,3 @@
-/**
- * TEST 2 — Search Filter Component (10–15 min)
- *
- * Task: The search input isn't working correctly. Find and fix all the bugs.
- * Expected behaviour:
- *   - Typing in the input filters the product list in real time
- *   - The filter should be case-insensitive (e.g. "wireless" matches "Wireless Headphones")
- *   - No console warnings
- */
-
 import { useState } from 'react'
 
 const PRODUCTS = [
@@ -26,7 +16,7 @@ const PRODUCTS = [
 export default function App() {
   const [query, setQuery] = useState('')
 
-  const filtered = PRODUCTS.filter(p => p.includes(query)) // BUG 2
+  const filtered = PRODUCTS.filter(p => p.toLowerCase().includes(query.toLowerCase()))
 
   return (
     <div style={{ maxWidth: 420, margin: '48px auto', fontFamily: 'sans-serif' }}>
@@ -34,7 +24,7 @@ export default function App() {
 
       <input
         placeholder="Search products…"
-        onChange={setQuery} // BUG 1
+        onChange={e => setQuery(e.target.value)}
         style={{
           width: '100%',
           padding: '8px 12px',
@@ -47,8 +37,9 @@ export default function App() {
       />
 
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {filtered.map(product => ( // BUG 3
+        {filtered.map(product => (
           <li
+            key={product}
             style={{
               padding: '8px 4px',
               borderBottom: '1px solid #f3f4f6',
