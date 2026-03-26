@@ -1,15 +1,3 @@
-/**
- * TEST 3 — Color Cards (15–20 min)
- *
- * Task: This component fetches products from a public API and renders colour-coded
- * cards. There are 3 bugs — find and fix them all.
- *
- * Expected behaviour once fixed:
- *   1. Products load and render (no crash, no empty list)
- *   2. Each card's background colour matches its category (see CATEGORY_COLORS)
- *   3. High-rated products (rating >= 4) get a larger border-radius (more pill-shaped)
- *      and low-rated products get sharp corners
- */
 
 import { useState, useEffect } from 'react'
 
@@ -33,7 +21,7 @@ export default function App() {
 
   useEffect(() => {
     fetch('https://dummyjson.com/products?limit=12')
-      .then(r => r.text()) // BUG 1
+      .then(r => r.json())
       .then(data => {
         setProducts(data.products)
         setLoading(false)
@@ -58,9 +46,9 @@ export default function App() {
         }}
       >
         {products.map(product => {
-          const color = CATEGORY_COLORS[product.brand] ?? '#cbd5e1' // BUG 2
+          const color = CATEGORY_COLORS[product.category] ?? '#cbd5e1'
 
-          const borderRadius = product.rating >= 4 ? '4px' : '20px' // BUG 3
+          const borderRadius = product.rating >= 4 ? '20px' : '4px'
 
           return (
             <div
